@@ -1,0 +1,70 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+#- story: imagen
+#  steps:
+#  - intent: respuestas                
+#  - action: utter_Lamina2
+#  - action: action_imprimir_slot
+
+#- story: imagen2
+#  steps:
+#  - intent: respuestas2
+#  - action: utter_Lamina3
+#  - action: action_imprimir_slot
+
+#- story: imagen3
+#  steps:
+#  - intent: respuestas3
+#  - action: utter_Lamina1Sectorizada
+#  - action: action_imprimir_slot
+#  - intent: respuestaSector           ##respuestaSector la repito y funciona la story
+#  - action: utter_Lamina2Sectorizada
+#  - intent: respuestaSector
+#  - action: utter_Lamina3Sectorizada
+#  - intent: respuestaSector
+#  - action: utter_goodbye
+
+  #- story: imagenes
+  #steps:
+  #- intent: respuestas
+  #- action: utter_Lamina1Sectorizada
+  #- intent: respuestaSector
+  #- action: utter_Lamina2
+  #- intent: respuestas
+  #- action: utter_Lamina2Sectorizada
+  #- intent: respuestaSector
+  #- action: utter_Lamina3
+  #- intent: respuestas
+  #- action: utter_Lamina3Sectorizada
+  #- intent: respuestaSector
+  #- action: utter_goodbye

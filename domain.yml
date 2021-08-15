@@ -1,0 +1,220 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - welcome
+  - start
+  - respuestas
+  - respuestaSector
+  - respuestas2
+  - respuestas3
+  #- nombre
+  - id
+  - ok
+
+
+entities:
+#determinantes
+  - vista 
+  - par 
+  - reflejo 
+  - forma 
+  - movimiento 
+  - movimiento_humano
+  - mov_animal
+  - mov_inanimado
+  - color_cromatico 
+  - color_acromatico 
+  - textura 
+  - sombreado
+  - nombre
+ 
+
+slots:
+  nombre:
+    type: text
+  vista:
+    type: text 
+  par:
+    type: text 
+  reflejo:
+    type: text 
+  forma:
+    type: text 
+  movimiento: #hago solo movimiento y en action detecto si es humano o animal de acuerdo a contenido
+    type: text
+  color_cromatico: 
+    type: text
+  color_acromatico: 
+    type: text
+  textura:
+    type: text 
+  sombreado:
+    type: text 
+  # Es para guardar las rtas que va a dar el bot
+  response:
+    type: text
+  # Es para guardar las rtas de las laminas que ingresa el usuario
+  respuestaLamina1:
+    type: text
+  respuestaLamina2:
+    type: text
+  respuestaLamina3:
+    type: text
+  # Es para guardar las razones de las respuestas de las laminas que ingresa el usuario
+  razonesLamina1:
+    type: text
+  razonesLamina2:
+    type: text
+  razonesLamina3:
+    type: text
+  
+  contador:
+    type: text
+
+actions:
+  - action_imprimir_determinantes
+  - action_TerceraParte
+  # - action_upload
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_welcome:
+  - text: "Se le mostrarán tres manchas, en forma sucesiva, esto es, una a una. Usted deberá mirarlas y responder sólo a la primera pregunta que aparece en el protocolo, es decir, responder a **¿Qué podría ser esto?**. Debe escribir todo lo que podría ser cada mancha, tratando siempre de dar la mayor cantidad de respuestas posibles. Puede dar todas las respuestas que quiera o que se le ocurran. También puede mirar la mancha en forma total o sólo por partes eso queda a su criterio. Recuerde que la imagen no representa nada preciso y por lo tanto, no existen respuestas malas o buenas, asi que toda respuesta es válida. Pero antes de comenzar, nos vamos a poner de acuerdo en la manera que usted deberá escribir las respuestas. Escribirá la respuesta que considere y presionará la tecla enter. Si comprendió escriba la palabra listo" 
+
+  utter_nombre:
+  - text: "Por favor ingrese su nombre y apellido"
+  
+  utter_start:
+  - text:   "¿Qué podría ser esto?"
+    image: "https://i.imgur.com/ScvPxc3.jpeg"
+  
+  utter_Lamina2:
+  - text: "¿Qué podría ser esto?"
+    image: "https://i.imgur.com/ZLC8NbE.jpeg"
+
+  utter_Lamina3:
+  - text: "¿Qué podría ser esto?"
+    image: "https://i.imgur.com/9uHtd03.jpeg"
+
+  utter_Lamina1Razones:
+  - text: "Bien, usted escribió todo lo que la mancha podría ser, es decir, respondieron a la PRIMERA pregunta. Ahora, vamos a respomnder a la SEGUNDA pregunta que aparece más arriba en el protocolo. Esto tiene el propósito de que YO vea, tal como usted vio, cada una de sus respuestas. Para esto, volveré a mostrar las láminas, comenzando por la N°1 y usted, leerá sus respuestas y contestará a **¿QUE HAY EN LA MANCHA QUE HACE QUE PAREZCA LO QUE SE ANOTO?**. Tomará una a una sus respuestas, sin saltarse ninguna, y así, para la respuesta 1, respoderá a la pregunta y redactará o explicará lo que corresponde. Luego tomará su respuesta 2 y respondera de igual forma a la misma pregunta; luego se hará lo mismo para la respuesta 3 y de igual manera para todas las respuestas que usted haya escrito, sin dejar ninguna sin responder. Recuerde que la pregunta es **¿QUE HAY EN LA MANCHA QUE HACE QUE PAREZCA LO QUE SE VIO?** y no confundir con ¿donde está ubicado lo que anotaron?. Eso se hará mas adelante. Tenga cuidado con esa diferencia. Su respuesta:'{respuestaLamina1}'." # SLOT CON LA RTA DEL USUARIO
+    image: "https://i.imgur.com/ScvPxc3.jpeg"
+
+  utter_Lamina2Razones:
+  - text: "Aquí Usted ha dicho '{respuestaLamina2}'." # SLOT CON LA RTA DEL USUARIO
+    image: "https://i.imgur.com/ZLC8NbE.jpeg"
+
+  utter_Lamina3Razones:
+  - text: "Aquí Usted ha dicho '{respuestaLamina3}'." # SLOT CON LA RTA DEL USUARIO 
+    image: "https://i.imgur.com/9uHtd03.jpeg"
+
+  utter_TercerParte:
+  - text: "Bien, usted ya tiene escrita sus respuestas y lo qué hay ahí que hacer que se parezca lo que indicó. Ahora, pasaremos a la TERCERA PARTE de la prueba. Para esto se mostrarán unos esquemas donde aparecen las tres manchas. En éstos, usted deberá marcar un círculo en la zona o lugar donde vieron las respuestas que enumeraron, es decir, encerrar donde está toda la respuesta. Por ejemplo, si hubiera escrito que ve dos puntos blancos el dibujo sería el indicado con color rojo, escriba ok para proseguir"
+    image: "https://imgur.com/9qfhslC.jpeg"
+
+  utter_TercerParteLamina1:
+  - text: "Vaya a la pizarra y marque un círculo en la zona o lugar donde vió la respuesta que dió. Cuando termine oprima el botón guardar imagen. Finalmente vuelva al chat y escriba ok.
+          \nAquí Usted ha dicho '{respuestaLamina1}'"
+    image: "https://i.imgur.com/ScvPxc3.jpeg"
+  
+  utter_TercerParteLamina2:
+  - text: "Vaya a la pizarra y marque un círculo en la zona o lugar donde vió la respuesta que dió. Cuando termine oprima el botón guardar imagen. Finalmente vuelva al chat y escriba ok.
+          \nAquí Usted ha dicho '{respuestaLamina2}'"
+    image: "https://i.imgur.com/ZLC8NbE.jpeg"
+
+  utter_TercerParteLamina3:
+  - text: "Vaya a la pizarra y marque un círculo en la zona o lugar donde vió la respuesta que dió. Cuando termine oprima el botón guardar imagen. Finalmente vuelva al chat y escriba ok.
+          \nAquí Usted ha dicho '{respuestaLamina3}'"
+    image: "https://i.imgur.com/9uHtd03.jpeg"
+
+  utter_Fin:
+  - text: "Gracias por realizar el test"
+
+  utter_par:
+  - text: "hay par"
+
+  utter_no_par:
+  - text: "no hay par"
+
+  utter_vista:
+  - text: "hay vista"
+
+  utter_no_vista:
+  - text: "no hay vista"
+  
+  utter_color_cromatico:
+  - text: "hay color cromático"
+
+  utter_no_color_cromatico:
+  - text: "no hay color cromático"
+  
+  utter_color_acromatico:
+  - text: "hay color acromático"
+
+  utter_no_color_acromatico:
+  - text: "no hay color acromático"
+  
+  utter_forma_humana:
+  - text: "hay forma humana"
+
+  utter_forma_animal:
+  - text: "hay forma animal"
+
+  utter_forma_inaminada:
+  - text: "hay forma inanimada"
+
+  utter_no_forma:
+  - text: "no hay forma"
+
+  utter_movimiento_humano:
+  - text: "hay movimiento humano M"
+
+  utter_movimiento_inanimado:
+  - text: "hay movimiento inanimado m"
+
+  utter_movimiento_indefinido:
+  - text: "hay movimiento indefinido"
+    
+  utter_textura:
+  - text: "hay textura"
+
+  utter_no_textura:
+  - text: "no hay textura"
+
+  utter_reflejo:
+  - text: "hay reflejo"
+
+  utter_no_reflejo:
+  - text: "no hay reflejo"
+
+  utter_upload:
+   - text: Por favor arrastre el archivo denominado {nombre}.xlxs y sueltelo en la página web que acaba de abrirse. Gracias
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
